@@ -1,0 +1,29 @@
+:root {
+	--cor-p: #9a83e7;
+	--cor-s: #83d0e7;
+}
+
+body {
+	background-color: var(--cor-s);
+}
+p {
+	text-align: justify;
+}
+nav {
+	background-color: var(--cor-p);
+}
+thead {
+	background-color: var(--cor-p);
+}
+tbody {
+	background-color: #fff;
+}
+.btn {
+	color: var(--cor-p);
+	border-color: var(--cor-p);
+}
+.btn:hover {
+  color: #fff;
+  background-color: var(--cor-p);
+  border-color: none;
+}
