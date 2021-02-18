@@ -5,3 +5,7 @@ CREATE TABLE usuarios (
 	email varchar(100) NOT NULL PRIMARY KEY,
 	senha varchar(64) NOT NULL
 );
+CREATE TABLE admins(
+	usuario VARCHAR(50) PRIMARY KEY NOT NULL,
+	senha VARCHAR(64) NOT NULL
+);

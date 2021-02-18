@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+<?php
+session_start();
+if(isset($_SESSION['acesso']) && $_SESSION['acesso']){
+	echo '<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" type="text/css" href="../visual/css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="../visual/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
 		<title>Editar registro</title>
 	</head>
 	<body>
@@ -18,18 +21,20 @@
 					<li class="nav-item"><a href="../" class="nav-link">Início</a></li>
 					<li class="nav-item"><a href="../cadastrar" class="nav-link">Cadastrar usuário</a></li>
 					<li class="nav-item active"><a href="../registros" class="nav-link">Registros</a></li>
-					<li class="nav-item"><a href="../Sobre.html" class="nav-link">Sobre</a></li>
+					<li class="nav-item"><a href="../sobre.php" class="nav-link">Sobre</a></li>
+					<li class="nav-item"><a href="../login/finalizarSessao.php" class="nav-link">Sair</a></li>
 				</ul>
 			</div>
 		</nav>
-<?php
-if(isset($_GET["email"])){
-	require_once("../controle/UsuarioControle.php");
-	$controle = new UsuarioControle();
-	$usuario = $controle->selecionar($_GET["email"]);
+';
 
-	if($usuario != null){
-		echo "\t\t<div class=\"container\">
+	if(isset($_GET["email"])){
+		require_once("../controle/UsuarioControle.php");
+		$controle = new UsuarioControle();
+		$usuario = $controle->selecionar($_GET["email"]);
+
+		if($usuario != null){
+			echo "\t\t<div class=\"container\">
 			<div class=\"col-10 col-sm-8 col-md-6 col-lg-5 p-4 m-auto border rounded\" style=\"background: #fff;\">
 				<h3 class=\"mb-3\">Editar usuário</h3>
 				<form action=\"editar.php\" method=\"post\">
@@ -52,16 +57,19 @@ if(isset($_GET["email"])){
 				</form>
 			</div>
 		</div>
-			<script src=\"../js/popper.min.js\"></script>
-			<script src=\"../js/jquery.min.js\"></script>
-			<script src=\"../js/bootstrap.min.js\"></script>
+		<script src=\"../js/popper.min.js\"></script>
+		<script src=\"../js/jquery.min.js\"></script>
+		<script src=\"../js/bootstrap.min.js\"></script>
 ";
+		}else{
+			header("Location: ../");
+		}
 	}else{
 		header("Location: ../");
 	}
+	echo '	</body>
+</html>';
 }else{
-	header("Location: ../");
+	header("Location: ../login/");
 }
 ?>
-	</body>
-</html>

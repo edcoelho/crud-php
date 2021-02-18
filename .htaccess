@@ -1,4 +1,4 @@
-<FilesMatch "\.(ini|xml|sql)$">
+<FilesMatch "\.(ini|xml|sql|json)$">
     Order allow,deny
     Deny from all
 </FilesMatch>

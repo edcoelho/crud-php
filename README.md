@@ -10,4 +10,10 @@ Nesse projeto foi utilizado PHP para o back-end e MySQL para gerir o banco. No f
 
 ## Utilizando
 
-Para utilizar a aplicação é necessário editar o arquivo db.ini de acordo com a configuração do banco de dados.
+Para utilizar a aplicação é necessário editar o arquivo db.json de acordo com a configuração do banco de dados.
+
+## O que há de novo - Versão 2.0
+
+- Login para Admins: Agora apenas administradores cadastrados no banco de dados podem acessar e manipular registros, além de cadastrar novos registros.
+
+- JSON: Agora o arquivo de configuração do banco de dados está salvo no formato JSON.

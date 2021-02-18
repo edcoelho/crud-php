@@ -11,7 +11,8 @@ class Conexao {
 	function __construct($conf){
 		try{
 			if(file_exists($conf)){
-				$conf = parse_ini_file($conf);
+				$conf = file_get_contents($conf);
+				$conf = json_decode($conf, true);
 				$this->usr = $conf["usuario"];
 				$this->pwd = $conf["senha"];
 				$this->dbname = $conf["nome"];

@@ -7,7 +7,7 @@ class UsuarioControle {
 		
 		try{
 			if(get_class($usuario) == "UsuarioModelo"){
-				$conexao = new Conexao("../controle/db.ini");
+				$conexao = new Conexao("../controle/db.json");
 				$sql = "insert into usuarios (login, email, senha) values (:l, :e, :s);";
 				$comando = $conexao->getPDO()->prepare($sql);
 				$login = $usuario->getLogin();
@@ -34,7 +34,7 @@ class UsuarioControle {
 
 	public function apagar($email){
 		try{
-			$conexao = new Conexao("../controle/db.ini");
+			$conexao = new Conexao("../controle/db.json");
 			$sql = "delete from usuarios where email=:e;";
 			$comando = $conexao->getPDO()->prepare($sql);
 			$comando->bindParam("e", $email);
@@ -53,7 +53,7 @@ class UsuarioControle {
 
 	public function selecionar($email){
 		try{
-			$conexao = new Conexao("../controle/db.ini");
+			$conexao = new Conexao("../controle/db.json");
 			$sql = "select * from usuarios where email=:e;";
 			$comando = $conexao->getPDO()->prepare($sql);
 			$comando->bindParam("e", $email);
@@ -73,7 +73,7 @@ class UsuarioControle {
 
 	public function selecionarTudo(){
 		try{
-			$conexao = new Conexao("../controle/db.ini");
+			$conexao = new Conexao("../controle/db.json");
 			$sql = "select * from usuarios;";
 			$comando = $conexao->getPDO()->prepare($sql);
 			if($comando->execute()){
@@ -92,7 +92,7 @@ class UsuarioControle {
 	public function editar($usuario){
 		try{
 			if(get_class($usuario) == "UsuarioModelo"){
-				$conexao = new Conexao("../controle/db.ini");
+				$conexao = new Conexao("../controle/db.json");
 				$sql = "update usuarios set login=:l, senha=:s where email=:e;";
 				$comando = $conexao->getPDO()->prepare($sql);
 				$login = $usuario->getLogin();

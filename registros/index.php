@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+<?php
+session_start();
+if(isset($_SESSION['acesso']) && $_SESSION['acesso']){
+	echo '<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" type="text/css" href="../visual/css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="../visual/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
 		<title>Registros</title>
 	</head>
 	<body>
@@ -18,11 +21,11 @@
 					<li class="nav-item"><a href="../" class="nav-link">Início</a></li>
 					<li class="nav-item"><a href="../cadastrar" class="nav-link">Cadastrar usuário</a></li>
 					<li class="nav-item active"><a href="./" class="nav-link">Registros</a></li>
-					<li class="nav-item"><a href="../Sobre.html" class="nav-link">Sobre</a></li>
+					<li class="nav-item"><a href="../sobre.php" class="nav-link">Sobre</a></li>
+					<li class="nav-item"><a href="../login/finalizarSessao.php" class="nav-link">Sair</a></li>
 				</ul>
 			</div>
-		</nav>
-<?php 
+		</nav>';
 require_once("../controle/UsuarioControle.php");
 $controle = new UsuarioControle();
 $lista = $controle->selecionarTudo();
@@ -45,9 +48,9 @@ if($lista != null){
 							<td>{$i->getLogin()}</td>
 							<td>{$i->getEmail()}</td>
 							<td>{$i->getSenha()}</td>
-							<td><a href=\"apagar.php?email={$i->getEmail()}\" title=\"Apagar\"><img src=\"../visual/icons/trash.svg\" alt=\"Apagar\" height=\"20px\"/></a></td>
-							<td><a href=\"../editar/?email={$i->getEmail()}\" title=\"Editar\"><img src=\"../visual/icons/edit.svg\" alt=\"Editar\" height=\"20px\"/></a></td>
-						</tr>\n";
+							<td><a href=\"apagar.php?email={$i->getEmail()}\" title=\"Apagar\"><img src=\"../assets/icons/trash.svg\" alt=\"Apagar\" height=\"20px\"/></a></td>
+							<td><a href=\"../editar/?email={$i->getEmail()}\" title=\"Editar\"><img src=\"../assets/icons/edit.svg\" alt=\"Editar\" height=\"20px\"/></a></td>
+					</tr>\n";
 	}
 		echo "\t\t\t\t\t</tbody>
 				</table>\n
@@ -55,9 +58,12 @@ if($lista != null){
 		</div>
 		<script src=\"../js/jquery.min.js\"></script>
 		<script src=\"../js/popper.min.js\"></script>
-		<script src=\"../js/bootstrap.js\"></script>
-";
+		<script src=\"../js/bootstrap.min.js\"></script>";
+	}
+	echo "
+	</body>
+</html>";
+}else{
+	header("Location: ../login/");
 }
 ?>
-	</body>
-</html>

@@ -1,11 +1,14 @@
-<!DOCTYPE html>
+<?php
+session_start();
+if(isset($_SESSION['acesso']) && $_SESSION['acesso']){
+	echo '<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Cadastrar novo usuário</title>
-		<link rel="stylesheet" type="text/css" href="../visual/css/bootstrap.css" />
-		<link rel="stylesheet" type="text/css" href="../visual/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
 	</head>
 	<body>
 		<nav class="navbar navbar-dark navbar-expand-lg mb-5">
@@ -18,7 +21,8 @@
 					<li class="nav-item"><a href="../" class="nav-link">Início</a></li>
 					<li class="nav-item active"><a href="./" class="nav-link">Cadastrar usuário</a></li>
 					<li class="nav-item"><a href="../registros/" class="nav-link">Registros</a></li>
-					<li class="nav-item"><a href="../Sobre.html" class="nav-link">Sobre</a></li>
+					<li class="nav-item"><a href="../sobre.php" class="nav-link">Sobre</a></li>
+					<li class="nav-item"><a href="../login/finalizarSessao.php" class="nav-link">Sair</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -48,6 +52,10 @@
 		</div>
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/popper.min.js"></script>
-		<script src="../js/bootstrap.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
 	</body>
-</html>
+</html>';
+}else{
+	header("Location: ../login/");
+}
+?>

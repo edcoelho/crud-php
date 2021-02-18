@@ -1,10 +1,13 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" type="text/css" href="visual/css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="visual/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 		<title>Início</title>
 	</head>
 	<body>
@@ -18,7 +21,14 @@
 					<li class="nav-item active"><a href="./" class="nav-link">Início</a></li>
 					<li class="nav-item"><a href="cadastrar/" class="nav-link">Cadastrar usuário</a></li>
 					<li class="nav-item"><a href="registros/" class="nav-link">Registros</a></li>
-					<li class="nav-item"><a href="Sobre.html" class="nav-link">Sobre</a></li>
+					<li class="nav-item"><a href="sobre.php" class="nav-link">Sobre</a></li>
+					<?php
+					if(isset($_SESSION['acesso']) && $_SESSION['acesso']){
+						echo "<li class=\"nav-item\"><a href=\"login/finalizarSessao.php\" class=\"nav-link\">Sair</a></li>\n";
+					}else{
+						echo "<li class=\"nav-item\"><a href=\"login/\" class=\"nav-link\">Login</a></li>\n";
+					}
+					?>
 				</ul>
 			</div>
 		</nav>
@@ -33,7 +43,7 @@
 						<a href="registros/"><button class="btn w-100">Registros</button></a>
 					</div>
 					<div class="col-6">
-						<a href="Sobre.html"><button class="btn w-100">Sobre</button></a>
+						<a href="sobre.php"><button class="btn w-100">Sobre</button></a>
 					</div>
 				</div>
 				<div class="form-row mt-3">
@@ -46,6 +56,6 @@
 	
 		<script src="js/jquery.min.js"></script>
 		<script src="js/popper.min.js"></script>
-		<script src="js/bootstrap.js"></script>
+		<script src="bootstrap.min.js"></script>
 	</body>
 </html>
